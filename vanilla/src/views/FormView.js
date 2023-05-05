@@ -11,6 +11,7 @@ FormView.setup = function (el) {
     this.showResetButton(false);
     this.registerOnSubmitHandler();
     this.registerOnKeyUpHandler();
+    this.registerOnResetHandler();
 
     return this;
 }
@@ -37,14 +38,17 @@ FormView.registerOnSubmitHandler = function () {
         console.log(tag, 'registerOnSubmitHandler()');
         e.preventDefault();
     });
-
-    this.on('reset', e => {
-        this.showResetButton(false);
-    })
 }
 
 FormView.clearInput = function () {
     this.inputEl.value = "";
+}
+
+FormView.registerOnResetHandler = function () {
+    this.on('reset', e => {
+        this.emit('@reset');
+        this.showResetButton(false);
+    })
 }
 
 export default FormView;

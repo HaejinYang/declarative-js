@@ -6,8 +6,16 @@ export default {
     init() {
       console.log(tag, 'init()');
 
-      FormView.setup(document.querySelector('form')).on('@submit', e => {
-          console.log(tag, e.detail.input);
-      });
+      FormView.setup(document.querySelector('form'))
+          .on('@submit', e => this.onSubmit(e.detail.input))
+          .on('@reset', e => this.onRestForm());
     },
+
+    onSubmit(input) {
+        console.log(tag, 'onSubmit()', input);
+    },
+
+    onRestForm() {
+        console.log(tag, 'onRestForm()');
+    }
 }
