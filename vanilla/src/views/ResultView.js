@@ -17,4 +17,8 @@ ResultView.getSearchResultsHtml = function (data) {
     console.log(tag, 'getSearchResultsHtml()', data);
 }
 
+ResultView.clear = function () {
+    this.el.innerHTML = "";
+}
+
 export default ResultView;

@@ -30,6 +30,7 @@ export default {
 
     onRestForm() {
         console.log(tag, 'onRestForm()');
+        ResultView.clear();
     },
 
     onSearchResult(data) {
