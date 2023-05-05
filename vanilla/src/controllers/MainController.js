@@ -1,6 +1,8 @@
 import FormView from "../views/FormView.js";
 import ResultView from "../views/ResultView.js";
 import SearchModel from "../models/SearchModel.js";
+import tabView from "../views/TabView.js";
+import TabView from "../views/TabView.js";
 
 const tag = '[MainController]';
 
@@ -13,6 +15,9 @@ export default {
           .on('@reset', e => this.onRestForm());
 
       ResultView.setup(document.querySelector('#search-result'));
+
+      TabView.setup(document.querySelector('#tabs'))
+          .on('@change', e => this.onChangeTab(e.detail.tabName))
     },
 
     search(query) {
@@ -35,5 +40,8 @@ export default {
 
     onSearchResult(data) {
         ResultView.render(data);
-    }
+    },
+
+    onChangeTab(tabName) {
+    },
 }
