@@ -21,14 +21,13 @@ FormView.showResetButton = function (isShow = true) {
 
 FormView.registerOnKeyUpHandler = function () {
     this.on('keyup', e => {
-        this.showResetButton();
+        this.showResetButton(this.inputEl.value.length);
         const enter = 13;
 
         if (e.keyCode !== enter) {
             return;
         }
 
-        console.log(tag, 'enter event');
         this.emit('@submit', {input: this.inputEl.value});
     });
 }
